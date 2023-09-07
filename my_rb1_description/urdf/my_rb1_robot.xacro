@@ -1,0 +1,165 @@
+<?xml version="1.0" ?>
+<robot name="my_rb1_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find my_rb1_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find my_rb1_description)/urdf/my_rb1_robot.trans" />
+<xacro:include filename="$(find my_rb1_description)/urdf/my_rb1_robot.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="-3.3628014589006247e-07 0.007600983535985833 0.14700935764945564" rpy="0 0 0"/>
+    <mass value="19.982679556364577"/>
+    <inertia ixx="0.455072" iyy="0.467831" izz="0.61727" ixy="0.0" iyz="-0.009966" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_rb1_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_rb1_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="0.010000000000000037 -3.6187644375762694e-18 -3.6187644375762694e-18" rpy="0 0 0"/>
+    <mass value="0.30826877913349826"/>
+    <inertia ixx="9.6e-05" iyy="5.8e-05" izz="5.8e-05" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.205 -0.0 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_rb1_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.205 -0.0 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_rb1_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="2.7755575615628914e-17 3.6187644375762694e-18 -3.6187644375762694e-18" rpy="0 0 0"/>
+    <mass value="0.30826877913349826"/>
+    <inertia ixx="9.6e-05" iyy="5.8e-05" izz="5.8e-05" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.215 -0.0 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_rb1_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.215 -0.0 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_rb1_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="laser_1">
+  <inertial>
+    <origin xyz="-0.00010414408678453328 -0.0049502137661978085 0.017591961082103563" rpy="0 0 0"/>
+    <mass value="4.406839148425118"/>
+    <inertia ixx="0.00488" iyy="0.008657" izz="0.012637" ixy="1.6e-05" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 0.165 -0.188638" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_rb1_description/meshes/laser_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 0.165 -0.188638" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_rb1_description/meshes/laser_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="front_caster_1">
+  <inertial>
+    <origin xyz="0.007194799126683857 -0.0010800410894050705 0.009488442446829497" rpy="0 0 0"/>
+    <mass value="0.05520949516909528"/>
+    <inertia ixx="3e-06" iyy="4e-06" izz="3e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.000302 0.097484 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_rb1_description/meshes/front_caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.000302 0.097484 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_rb1_description/meshes/front_caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="back_caster_1">
+  <inertial>
+    <origin xyz="0.007201162577009526 0.0003557586227844328 0.010080510133620674" rpy="0 0 0"/>
+    <mass value="0.06173111557345195"/>
+    <inertia ixx="4e-06" iyy="4e-06" izz="4e-06" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.000879 -0.092304 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_rb1_description/meshes/back_caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.000879 -0.092304 -0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://my_rb1_description/meshes/back_caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="left_joint" type="continuous">
+  <origin xyz="0.205 0.0 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="right_joint" type="continuous">
+  <origin xyz="-0.215 0.0 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="laser_joint" type="fixed">
+  <origin xyz="0.0 -0.165 0.188638" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="laser_1"/>
+</joint>
+
+<joint name="front_caster_joint" type="fixed">
+  <origin xyz="0.000302 -0.097484 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="front_caster_1"/>
+</joint>
+
+<joint name="back_caster_joint" type="fixed">
+  <origin xyz="0.000879 0.092304 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="back_caster_1"/>
+</joint>
+
+</robot>
