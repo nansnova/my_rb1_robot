@@ -10,3 +10,6 @@ angular:
   x: 0.0
   y: 0.0
   z: 0.0"`
+
+Use the next line to test the laser topic
+- `rostopic echo /my_rb1_robot/scan`
