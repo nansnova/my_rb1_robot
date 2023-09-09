@@ -7,7 +7,7 @@
   <plugin name="control" filename="libgazebo_ros_control.so"/>
 </gazebo>
 <gazebo reference="base_link">
-  <material>${body_color}</material>
+  <material>Gazebo/Black</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
@@ -15,35 +15,35 @@
 </gazebo>
 
 <gazebo reference="left_wheel_1">
-  <material>${body_color}</material>
+  <material>Gazebo/Blue</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
 <gazebo reference="right_wheel_1">
-  <material>${body_color}</material>
+  <material>Gazebo/Blue</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
 <gazebo reference="laser_1">
-  <material>${body_color}</material>
+  <material>Gazebo/Grey</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
 <gazebo reference="front_caster_1">
-  <material>${body_color}</material>
+  <material>Gazebo/Blue</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
 <gazebo reference="back_caster_1">
-  <material>${body_color}</material>
+  <material>Gazebo/Blue</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>

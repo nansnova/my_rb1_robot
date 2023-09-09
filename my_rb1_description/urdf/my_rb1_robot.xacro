@@ -165,7 +165,6 @@
 <!-- differential drive plugin -->
 <gazebo>
   <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-    <robotNamespace />
     <alwaysOn>true</alwaysOn>
     <use_sim_time>true</use_sim_time>
     <updateRate>500</updateRate>
@@ -222,7 +221,7 @@
       </noise>
     </ray>
     <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
-      <topicName>/my_rb1_robot/scan</topicName>
+      <topicName>/scan</topicName>
       <frameName>laser_1</frameName>
     </plugin>
   </sensor>
