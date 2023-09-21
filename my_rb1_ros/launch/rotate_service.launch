@@ -1,0 +1,10 @@
+<launch> 
+  
+  <!-- C++ code that calls the /rotate_robot service --> 
+    <node pkg ="my_rb1_ros" 
+        type="rotate_service" 
+        name="rotate_robot" 
+        output="screen"> 
+  </node> 
+   
+</launch>
