@@ -7,7 +7,8 @@
 double roll = 0.0;
 double pitch = 0.0;
 double yaw = 0.0;
-double target_angle = 0.0; // Initialize with 0 degrees initially
+double target_angle_degrees = 0.0; // Initialize with 0 degrees initially
+double target_angle_radians = 0.0; // Store target angle in radians
 double kP = 0.5;
 bool rotation_requested = false;
 
@@ -24,14 +25,31 @@ void get_rotation(const nav_msgs::Odometry::ConstPtr &msg) {
     tf::quaternionMsgToTF(msg->pose.pose.orientation, orientation_q);
     tf::Matrix3x3 mat(orientation_q);
     mat.getRPY(roll, pitch, yaw);
-    ROS_INFO("Yaw: %f", yaw);
+    ROS_INFO("Yaw: %f radians", yaw);
 
-    double target_rad = target_angle * M_PI / 180.0;
-    command.angular.z = kP * (target_rad - yaw);
+    double error = target_angle_radians - yaw;
+
+    // Normalize error to the range of -pi to pi
+    while (error > M_PI) {
+      error -= 2 * M_PI;
+    }
+    while (error < -M_PI) {
+      error += 2 * M_PI;
+    }
+
+    // Ensure the robot always takes the shorter path
+    if (error > M_PI) {
+      error = error - 2 * M_PI;
+    } else if (error < -M_PI) {
+      error = error + 2 * M_PI;
+    }
+
+    command.angular.z = kP * error;
 
     // Check if the robot has reached the target angle
-    if (fabs(yaw - target_rad) < 0.01) {
-      target_angle = 0.0;         // Reset the target angle to 0 degrees
+    if (fabs(error) < 0.01) {
+      target_angle_degrees = 0.0; // Reset the target angle to 0 degrees
+      target_angle_radians = 0.0;
       rotation_requested = false; // Reset the rotation request flag
     }
   }
@@ -41,12 +59,15 @@ void get_rotation(const nav_msgs::Odometry::ConstPtr &msg) {
 bool rotateRobotCallback(my_rb1_ros::Rotate::Request &req,
                          my_rb1_ros::Rotate::Response &res) {
   // Get the requested degrees from the service request
-  target_angle = req.degrees;
+  double requested_degrees = req.degrees;
+
+  // Calculate the target angle in radians
+  target_angle_radians += requested_degrees * M_PI / 180.0;
 
   // Set the rotation request flag to true
   rotation_requested = true;
 
-  ROS_INFO("Rotation requested: %.2f degrees", target_angle);
+  ROS_INFO("Rotation requested: %.2f degrees", requested_degrees);
 
   res.success = "Rotation requested.";
   return true;
